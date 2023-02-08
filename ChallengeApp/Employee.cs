@@ -1,7 +1,5 @@
 ﻿using ChallengeApp;
 
-
-
 namespace ChallengeApp;
 
 public class Employee
@@ -12,8 +10,6 @@ public class Employee
         this.Name = name;
         this.Surname = surname;
         this.Age = age;
-
-
     }
 
     public string Name { get; private set; }
@@ -26,13 +22,12 @@ public class Employee
         {
             return score.Sum();
 
-
         }
+
     }
     public void AddScore(int grade)
     {
         this.score.Add(grade);
     }
-
 }
-    
+
