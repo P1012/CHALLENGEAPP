@@ -16,12 +16,12 @@
             // Assert
 
             Assert.AreNotEqual(employee1, employee2);
-            Assert.AreEqual(employee3.Age, employee4.Age);
+           
         }
         private Employee GetEmployee(string name, string surname, string age)
         {
 
-            return new Employee(name, surname, age);
+            return new Employee(name, surname);
 
         }
         [Test]
