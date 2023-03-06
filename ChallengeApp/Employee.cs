@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp
+﻿using System.Runtime.CompilerServices;
+
+namespace ChallengeApp
 {
     public class Employee
     {
@@ -82,8 +84,128 @@
 
             return statistics;
         }
+        public Statistics GetStatisticsWithForEach()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            foreach (var grade in this.grades)
+            {
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
+            }
+            statistics.Average /= this.grades.Count;
+            return statistics;
+        }
+
+
+        public Statistics GetStatisticsWithFor()
+        {
+            var statisticsFor = new Statistics();
+            statisticsFor.Average = 0;
+            statisticsFor.Max = float.MinValue;
+            statisticsFor.Min = float.MaxValue;
+            for (var index = 0; index < this.grades.Count; index++)
+            {
+                statisticsFor.Max = Math.Max(statisticsFor.Max, this.grades[index]);
+                statisticsFor.Min = Math.Min(statisticsFor.Min, this.grades[index]);
+                statisticsFor.Average += this.grades[index];
+            }
+            statisticsFor.Average /= this.grades.Count;
+            return statisticsFor;
+        }
+        public Statistics GetStatisticsDoWhile()
+        {
+            var statisticsDoWhile = new Statistics();
+            statisticsDoWhile.Average = 0;
+            statisticsDoWhile.Max = float.MinValue;
+            statisticsDoWhile.Min = float.MaxValue;
+            var index = 0;
+            do
+            {
+                statisticsDoWhile.Max = Math.Max(statisticsDoWhile.Max, this.grades[index]);
+                statisticsDoWhile.Min = Math.Min(statisticsDoWhile.Min, this.grades[index]);
+                statisticsDoWhile.Average += this.grades[index];
+                index++;
+
+            } while (index < this.grades.Count);
+            statisticsDoWhile.Average /= this.grades.Count;
+            return statisticsDoWhile;
+        }
+        public Statistics GetStatisticsWhile()
+        {
+            var statisticsWhile = new Statistics();
+            statisticsWhile.Average = 0;
+            statisticsWhile.Max = float.MinValue;
+            statisticsWhile.Min = float.MaxValue;
+            var index = 0;
+            while (index < this.grades.Count)
+            {
+                statisticsWhile.Max = Math.Max(statisticsWhile.Max, this.grades[index]);
+                statisticsWhile.Min = Math.Min(statisticsWhile.Min, this.grades[index]);
+                statisticsWhile.Average += this.grades[index];
+            }
+            statisticsWhile.Average /= (float)this.grades.Count;
+            return GetStatisticsWhile();
+        }
     }
-}      
+}
+
+
+      
+     
+    
+
+
+  
+        
+        
+        
+	  
+
+	   
+
+	    
+
+	    
+        
+        
+            
+            
+            
+            
+        
+            
+        
+
+         
+		
+
+			
+			
+
+			
+    
+
+			
+
+			
+        
+        
+            
+        
+        
+        
+         
+			
+
+		
+       
+
+			
+  
 
 
              
