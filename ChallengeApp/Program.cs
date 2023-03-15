@@ -1,30 +1,29 @@
 ﻿using ChallengeApp;
+Console.WriteLine("Welcome to program work hard until You die for nothing");
+Console.WriteLine("-------------------------------------------------------"); 
+Console.WriteLine();
 
-var employee = new Employee("Sydney" ,"Prescot");
-employee.AddGrade("5");
-employee.AddGrade("Pawel");
-employee.AddGrade(40);
-employee.AddGrade(101);
-employee.AddGrade(33.033);
-employee.AddGrade(9F);
-employee.AddGrade(float.MinValue);
+
+var employee = new Employee("Sydney", "Prescot");
+
+while (true)
+{
+    Console.WriteLine("Show next Worker grade: ");
+    var input = Console.ReadLine();
+    if (input == "q")
+    {
+        break;
+    }
+    employee.AddGrade(input);
+}
 var statistics = employee.GetStatistics();
-Console.WriteLine("Petla Foreach");
-Console.WriteLine($"Average :{statistics.Average:N2}");
+Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
- statistics = employee.GetStatisticsWithFor();
-Console.WriteLine("Petla  For");
-Console.WriteLine($"Average :{statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-statistics = employee.GetStatisticsDoWhile();
-Console.WriteLine("Petla Do While");
-Console.WriteLine($"Average :{statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
-statistics = employee.GetStatisticsWhile();
-Console.WriteLine("Petla While");
-Console.WriteLine($"Average :{statistics.Average:N2}");
-Console.WriteLine($"Min: {statistics.Min}");
-Console.WriteLine($"Max: {statistics.Max}");
+
+
+
+
+
+
+
