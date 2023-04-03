@@ -4,7 +4,7 @@ Console.WriteLine("-------------------------------------------------------");
 Console.WriteLine();
 
 
-var employee = new Employee("Sydney", "Prescot");
+var employee = new Employee("Sydney", "Prescot", 33, "Woman");
 
 while (true)
 {

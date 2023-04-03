@@ -1,17 +1,12 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-        }
-        public string Name { get; private set; }
+        public Employee(string name, string surname, int age, string sex)
+            : base(name, surname, age, sex) { }
 
-        public string Surname { get; private set; }
         public void AddGrade(float grade)
         {
             int valueInInt = (int)grade;
@@ -22,7 +17,7 @@
             }
             else
             {
-                throw new Exception ("Invalid grade value");
+                throw new Exception("Invalid grade value");
             }
         }
         public void AddGrade(string grade)
@@ -33,10 +28,9 @@
             }
             else
             {
-                throw new Exception ("String is not float ");
+                throw new Exception("String is not float ");
             }
         }
-
         public void AddGrade(char grade)
         {
             switch (grade)
@@ -62,10 +56,10 @@
                     this.grades.Add(20);
                     break;
                 default:
-                    throw new Exception ("Wrong Letter");
-                    
+                    throw new Exception("Wrong Letter");
+
             }
-        }            
+        }
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -104,70 +98,70 @@
 }
 
 
-       
-    
 
 
 
-      
-     
-    
 
 
-  
-        
-        
-        
-	  
-
-	   
-
-	    
-
-	    
-        
-        
-            
-            
-            
-            
-        
-            
-        
-
-         
-		
-
-			
-			
-
-			
-    
-
-			
-
-			
-        
-        
-            
-        
-        
-        
-         
-			
-
-		
-       
-
-			
-  
 
 
-             
-            
-            
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
