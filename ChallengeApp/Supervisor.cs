@@ -26,6 +26,7 @@
         {
             throw new Exception("Value not allowed for Supervisor");
         }
+        
         public void AddGrade(string grade)
         {
             switch (grade)

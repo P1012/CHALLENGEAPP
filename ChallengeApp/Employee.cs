@@ -73,9 +73,24 @@
 
         public void AddGrade(int grade)
         {
-            throw new NotImplementedException();
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add((float)grade);
+            }
+            else
+            {
+                throw new Exception("Invalid grade value");
+            }
         }
 
+        public void AddGrade(double grade)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddGrade(long grade) 
+        { 
+            throw new NotImplementedException(); 
+        }
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
