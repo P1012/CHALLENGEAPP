@@ -1,155 +1,125 @@
-﻿namespace ChallengeApp
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
-        public EmployeeInFile(string name, string surname, string sex, int age)
-             : base(name, surname, sex, age)
+
+        public EmployeeInFile(string name, string surname, string sex, string age)
+            : base(name, surname, sex, age)
         {
 
         }
 
-        private List<float> grades = new List<float>();
+        private void WriteGradeToFile(float grade)
+        {
+            using (var writer = File.AppendText(fileName))
+            {
+                writer.WriteLine(grade);
+            }
+        }
+
         public override void AddGrade(float grade)
         {
-
+            if (grade >= 0 && grade <= 100)
             {
-                using (var writer = File.AppendText(fileName))
-
-                    writer.WriteLine(grade);
+                WriteGradeToFile(grade);
+            }
+            else
+            {
+                throw new Exception("Invalid grade value");
             }
         }
+
         public override void AddGrade(string grade)
         {
-            using (var writer = File.AppendText(fileName))
-                writer.WriteLine(grade);
+            if (float.TryParse(grade, out float result))
+            {
+                AddGrade(result);
+            }
+            else if (grade.Length == 1)
+            {
+                AddGrade(Convert.ToChar(grade));
+            }
+            else
+            {
+                throw new Exception("Invalid Value");
+            }
         }
+
         public override void AddGrade(double grade)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                writer.WriteLine(grade);
-            }
+            float gradeAsFloat = (float)grade;
+            AddGrade(gradeAsFloat);
         }
+
         public override void AddGrade(int grade)
         {
-            using (var writer = File.AppendText(fileName))
-            {
-                writer.WriteLine(grade);
-            }
+            AddGrade((float)grade);
         }
+
         public override void AddGrade(char grade)
         {
-            using (var writer = File.AppendText(fileName))
+            switch (grade)
             {
-                switch (grade)
-                {
-                    case 'A':
-                    case 'a':
-                        this.grades.Add(100);
-                        break;
-                    case 'B':
-                    case 'b':
-                        this.grades.Add(80);
-                        break;
-                    case 'C':
-                    case 'c':
-                        this.grades.Add(60);
-                        break;
-                    case 'D':
-                    case 'd':
-                        this.grades.Add(40);
-                        break;
-                    case 'E':
-                    case 'e':
-                        this.grades.Add(20);
-                        break;
-                    default:
-                        throw new Exception("Wrong Letter");
-                }
+                case 'A':
+                case 'a':
+                    WriteGradeToFile(100);
+                    break;
+                case 'B':
+                case 'b':
+                    WriteGradeToFile(80);
+                    break;
+                case 'C':
+                case 'c':
+                    WriteGradeToFile(60);
+                    break;
+                case 'D':
+                case 'd':
+                    WriteGradeToFile(40);
+                    break;
+                case 'E':
+                case 'e':
+                    WriteGradeToFile(20);
+                    break;
+                default:
+                    throw new Exception("Wrong Letter");
             }
-        } 
-        public override Statistics GetStatistics()
-        {
-            var gradesFromFile = this.ReadGradesFromFile();
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
         }
+
         private List<float> ReadGradesFromFile()
         {
             var grades = new List<float>();
-            if (File.Exists($"{fileName}"))
+            if (File.Exists(fileName))
             {
-                using (var reader = File.OpenText($"{fileName}"))
+                using (var reader = File.OpenText(fileName))
                 {
-                    var line = reader.ReadLine();
-                    while (line != null)
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        var number = float.Parse(line);
-                        grades.Add(number);
-                        line = reader.ReadLine();
-
+                        if (float.TryParse(line, out float grade))
+                        {
+                            grades.Add(grade);
+                        }
                     }
                 }
-
             }
 
             return grades;
         }
-        public Statistics CountStatistics(List<float> grades)
+
+        public override Statistics GetStatistics()
         {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
+            var gradesFromFile = ReadGradesFromFile();
+            return CountStatistics(gradesFromFile);
+        }
 
-            foreach (var grade in grades)
-            {
-                if (grade >= 0 && grade <= 100)
-                {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
-                }
-            }
-
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-
-                default:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-            return statistics;
+        private Statistics CountStatistics(List<float> gradesFromFile)
+        {
+            throw new NotImplementedException();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 

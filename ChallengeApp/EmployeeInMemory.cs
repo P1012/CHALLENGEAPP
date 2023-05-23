@@ -1,9 +1,10 @@
 ﻿namespace ChallengeApp
 {
-    public class EmployeeInMemory : EmployeeBase,IEmployee
+    public class EmployeeInMemory : EmployeeBase, IEmployee
     {
-        public EmployeeInMemory(string name, string surname, string sex, int age)
-            : base(name, surname, sex, age)
+        public EmployeeInMemory(string name, string surname, string sex,string age)
+            : base(name, surname, sex, age ) 
+
         {
         }
 

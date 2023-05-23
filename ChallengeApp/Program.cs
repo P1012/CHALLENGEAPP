@@ -3,19 +3,22 @@
 Console.WriteLine("Welcome to program work hard until You die for nothing");
 Console.WriteLine("-------------------------------------------------------"); 
 Console.WriteLine();
-var employee = new EmployeeInFile("Sydney", "Prescot", "Women", 33);
-var statistics = employee.GetStatistics();
+var employee = new EmployeeInFile("Sydney", "Prescot", "Women","33");
 
-Console.WriteLine("-------------------");
+
+
 Console.WriteLine("New Grades");
 Console.WriteLine("-------------------");
-
-
-
 employee.AddGrade(1.5f);
-employee.AddGrade("20");
-employee.AddGrade(15);
+employee.AddGrade('c');
 employee.AddGrade('B');
+employee.AddGrade(20);
+employee.AddGrade("15");
+employee.AddGrade("20");
+
+
+
+
 
 
 

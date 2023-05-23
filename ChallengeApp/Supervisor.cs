@@ -5,7 +5,15 @@
         public string Name => "Sydney";
         public string Surname => "Prescot";
         public string Sex => "Woman";
-        public int Age => 33;
+
+        public string Age => "33";
+
+        
+
+        public void AddGrad(string grade)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddGrade(double grade)
         {

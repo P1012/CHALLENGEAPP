@@ -2,7 +2,9 @@
 {
     public abstract class EmployeeBase : IEmployee
     {
-        public EmployeeBase(string name, string surname, string sex, int age)
+        private static int average;
+
+        public EmployeeBase(string name, string surname, string sex,string age)
         {
             Name = name;
             Surname = surname;
@@ -10,13 +12,20 @@
             Age = age;
         }
 
+       
+
         public string Name { get; private set; }
 
         public string Surname { get; private set; }
 
         public string Sex { get; private set; }
 
-        public int Age { get; private set; }
+        public string Age { get; private set; }
+
+        public void AddGrad(string grade)
+        {
+            throw new NotImplementedException();
+        }
 
         public abstract void AddGrade(float grade);
         public abstract void AddGrade(int grade);
