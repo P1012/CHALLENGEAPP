@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.ComponentModel;
+
 namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
         private const string fileName = "grades.txt";
-
+        private object grades;
+        private object Add;
         public EmployeeInFile(string name, string surname, string sex, string age)
             : base(name, surname, sex, age)
         {
+           
 
         }
-
         private void WriteGradeToFile(float grade)
         {
             using (var writer = File.AppendText(fileName))
@@ -20,17 +20,26 @@ namespace ChallengeApp
                 writer.WriteLine(grade);
             }
         }
-
         public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
-                WriteGradeToFile(grade);
+                AddGrade(grade);
+                WriteMessageDelegate($"Added grade: {grade}");
+
+
             }
             else
             {
-                throw new Exception("Invalid grade value");
+                throw new Exception("Invalid grade employee");
             }
+
+
+        }
+        
+        private void WriteMessageDelegate(string v)
+        {
+            throw new NotImplementedException();
         }
 
         public override void AddGrade(string grade)
@@ -48,18 +57,15 @@ namespace ChallengeApp
                 throw new Exception("Invalid Value");
             }
         }
-
         public override void AddGrade(double grade)
         {
             float gradeAsFloat = (float)grade;
             AddGrade(gradeAsFloat);
         }
-
         public override void AddGrade(int grade)
         {
             AddGrade((float)grade);
         }
-
         public override void AddGrade(char grade)
         {
             switch (grade)
@@ -88,7 +94,6 @@ namespace ChallengeApp
                     throw new Exception("Wrong Letter");
             }
         }
-
         private List<float> ReadGradesFromFile()
         {
             var grades = new List<float>();
@@ -109,17 +114,16 @@ namespace ChallengeApp
 
             return grades;
         }
-
         public override Statistics GetStatistics()
         {
             var gradesFromFile = ReadGradesFromFile();
             return CountStatistics(gradesFromFile);
         }
-
         private Statistics CountStatistics(List<float> gradesFromFile)
         {
             throw new NotImplementedException();
         }
     }
 }
+
 

@@ -10,27 +10,27 @@
 
         public override void AddGrade(float grade) 
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Grade Added");
         }
         
 
         public override void AddGrade(int grade)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Grade Added");
         }
 
         public override void AddGrade(char grade)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Grade Added");
         }
 
         public override void AddGrade(string grade)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Grade Added");
         }
         public override void AddGrade(double grade)
         {
-            throw new NotImplementedException(); 
+            Console.WriteLine("Grade Added"); 
         }
        
         public override Statistics GetStatistics()
