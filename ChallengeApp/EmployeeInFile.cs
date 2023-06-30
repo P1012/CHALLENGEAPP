@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+﻿using ChallengeApp;
 
 namespace ChallengeApp
 {
@@ -10,7 +10,7 @@ namespace ChallengeApp
         public EmployeeInFile(string name, string surname, string sex, string age)
             : base(name, surname, sex, age)
         {
-           
+
 
         }
         private void WriteGradeToFile(float grade)
@@ -26,23 +26,17 @@ namespace ChallengeApp
             {
                 AddGrade(grade);
                 WriteMessageDelegate($"Added grade: {grade}");
-
-
             }
             else
             {
                 throw new Exception("Invalid grade employee");
             }
-
-
         }
-        
         private void WriteMessageDelegate(string v)
         {
             throw new NotImplementedException();
         }
-
-        public override void AddGrade(string grade)
+        public override void AddGrad(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -119,11 +113,20 @@ namespace ChallengeApp
             var gradesFromFile = ReadGradesFromFile();
             return CountStatistics(gradesFromFile);
         }
+
         private Statistics CountStatistics(List<float> gradesFromFile)
         {
-            throw new NotImplementedException();
+            var statistics = new Statistics();
+            foreach(var grade in gradesFromFile) 
+            { 
+             statistics.AddGrade(grade);
+            }
+            return statistics;
         }
     }
 }
+
+
+
 
 

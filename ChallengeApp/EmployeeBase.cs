@@ -4,7 +4,10 @@
     {
         public delegate void GradeAddedDelegate(object sender, EventArgs args);
         public event GradeAddedDelegate GradeAdded;
-        private static int average;
+        public void AddGrade(string grade)
+        {
+            throw new NotImplementedException();
+        }
 
         public EmployeeBase(string name, string surname, string sex, string age)
         {
@@ -24,19 +27,12 @@
         
         public abstract void AddGrade(int grade);
         public abstract void AddGrade(char grade);
-        public abstract void AddGrade(string grade);
+        public abstract void AddGrad(string grade);
 
         public abstract void AddGrade(double grade);
         
         public abstract Statistics GetStatistics();
 
-        public void AddGrad(string grade)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal class WriteMessage
-        {
-        }
+        
     }  
 }
